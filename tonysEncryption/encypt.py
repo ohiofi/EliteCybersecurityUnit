@@ -63,7 +63,6 @@ def toBase64(vals):
     while len(groupedVals[last_index]) < 6:
         groupedVals[last_index] += "0"
 
-    print(str(groupedVals))
     base64String = ""
     for group in groupedVals:
         foo = 0
@@ -91,10 +90,10 @@ def encryptString(word, randomVal):
     base64 = toBase64(invertedBinary)
 
 
-    print("starting string: " + word)
-    print("ascii:   " + str(asciiVals))
-    print("added:   " + str(pulseRandomVal))
-    print("shifted: " + str(shiftedBinary))
-    print("inverted: " + str(base2ToDecmail(invertedBinary)))
-    print("base 64: " + str(base64))
+    # print("starting string: " + word)
+    # print("ascii:   " + str(asciiVals))
+    # print("added:   " + str(pulseRandomVal))
+    # print("shifted: " + str(shiftedBinary))
+    # print("inverted: " + str(invertedBinary))
+    # print("base 64: " + str(base64))
     return base64

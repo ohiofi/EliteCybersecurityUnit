@@ -1,4 +1,4 @@
-from encypt import toBinary, base2ToDecmail, invert
+from encypt import *
 
 
 
@@ -8,6 +8,15 @@ def asciiToChar(asciiArr):
         convertedWord += chr(val)
     return convertedWord
 
+def subRandomVal(randomArr, val):
+    return addRandomVal(randomArr, (-1 * val))
+
+
+def base2ToDecmail(binaryArr):
+    convertedVals = []
+    for binary in binaryArr:
+        convertedVals.append(int(binary, 2))
+    return convertedVals
 
 def bitShiftRight(asciiArr, shiftAmt):
     convertedValues = []
@@ -37,8 +46,19 @@ def base64ToBase2(b64String):
     for i in range(0, len(binaryString) // 8):
         convertedVals.append(binaryString[i * 8:((i+1) * 8)])
     
+
     return convertedVals
 
 
+def decryptString(encyptedWord, randomVal):
+    invertetedWord = base64ToBase2(encyptedWord)
+    ShiftedBinary = invert(invertetedWord)
+    shiftedVals = base2ToDecmail(ShiftedBinary)
+    randomVals = bitShiftRight(shiftedVals, 1)
+    ascii = subRandomVal(randomVals, randomVal)
+    decryptedWord = asciiToChar(ascii)
+    return(decryptedWord)
+
+   
 
 

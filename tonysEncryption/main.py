@@ -1,24 +1,15 @@
-from encypt import encryptString
-
-
-
-def cipher(word, key):
-    newWord = ""
-
-    #TODO
-
-    return newWord
-
-
+from decrypt import encryptString, decryptString
 
 def main():
-    inputWord = "hello"
+    inputWord = "Hello World!"
     randomVal = 1324657869764524231
     
     encryptedWord = encryptString(inputWord, randomVal)
+    decryptedWord = decryptString(encryptedWord, randomVal)
     print()
-    print("starting string:  " + inputWord)
     print("encrypted string: " + encryptedWord)
+    print("decrypted string: " + decryptedWord)
+
 
 main()
 
