@@ -6227,7 +6227,6 @@ layers
 layout
 layout.inc
 layouts
-lazy
 lb
 lbs
 lc
@@ -12236,6 +12235,5 @@ brown
 fox
 jumped
 over
-the
 lazy
 dog
