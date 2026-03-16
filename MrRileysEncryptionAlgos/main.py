@@ -34,6 +34,20 @@ def rileySuperSecretEncrypt03(word):
         else:
             result += eachLetter
     return rileySuperSecretEncrypt03(result) + word[0]
+
+def rileySuperSecretEncrypt04(word):
+    exponent = 1
+    for eachLetter in word:
+        exponent += ord(eachLetter)
+    result = ""
+    for eachLetter in word:
+        # convert to int
+        num = ord(eachLetter)
+        num = pow(num, exponent)
+        # ASCII printable characters (character code 32-127)
+        # result += chr((num % 95) + 32)
+        result += chr(num % 44444)
+    return result
     
 
 # this is just for testing as more words get added to bigListOfWords.txt
@@ -44,15 +58,15 @@ def checkForDuplicatesInWordList():
             if eachWord in dictionaryOfWords:
                 # already in the dictionary?
                 dictionaryOfWords[eachWord] += 1
-                # print("OOPS " + eachWord + " is already in the dictionaryOfWords", end =" / ")
+                print("OOPS " + eachWord + " is already in the dictionaryOfWords", end =" / ")
                 # return
             else:
                 # add to dictionaryOfHashes and set it to 1 appearance
                 dictionaryOfWords[eachWord] = 1
-    # print("no duplicates")
-    with open("words.txt", "w") as f:
-        for key in dictionaryOfWords:
-            f.write(key)
+    print("no duplicates")
+    # with open("words.txt", "w") as f:
+    #     for key in dictionaryOfWords:
+    #         f.write(key)
 
 
 
@@ -86,7 +100,7 @@ def printEncryptedWords():
     with open("bigListOfWords.txt") as myFile:
         for eachWord in myFile:
             # print(eachWord)
-            encryptedWord = rileySuperSecretEncrypt01(eachWord.strip("\n"))
+            encryptedWord = rileySuperSecretEncrypt03(eachWord.strip("\n"))
             print(encryptedWord)
 
 
@@ -97,7 +111,14 @@ def printEncryptedWords():
 
 # checkForCollisions(functionName = rileySuperSecretEncrypt03)
 
+# checkForCollisions(functionName = rileySuperSecretEncrypt04)
+
+# checkForDuplicatesInWordList()
+
+
+
 # printEncryptedWords()
 
-# print(rileySuperSecretEncrypt03("Hello World"))
-print("Hello World")
+print(rileySuperSecretEncrypt03("Hello World"))
+
+# print("Hello World")
