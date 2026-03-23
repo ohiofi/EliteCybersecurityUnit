@@ -48,6 +48,25 @@ def rileySuperSecretEncrypt04(word):
         # result += chr((num % 95) + 32)
         result += chr(num % 44444)
     return result
+
+
+def rileyKeyEncrypt(word, key):
+    exponent = 1
+    keyCounter = 0
+    for eachLetter in key:
+        exponent += ord(eachLetter)
+    result = ""
+    for eachLetter in word:
+        # convert to int
+        num = ord(eachLetter) + ord(key[keyCounter])
+        keyCounter += 1
+        keyCounter = keyCounter % len(key)
+        num = pow(num, exponent)
+        # ASCII printable characters (character code 32-127)
+        # result += chr((num % 95) + 32)
+        #result += chr(num % 44444)
+        result += str(num)
+    return result
     
 
 # this is just for testing as more words get added to bigListOfWords.txt
@@ -119,6 +138,8 @@ def printEncryptedWords():
 
 # printEncryptedWords()
 
-print(rileySuperSecretEncrypt03("Hello World"))
+# print(rileySuperSecretEncrypt03("Hello World"))
 
 # print("Hello World")
+
+print(rileyKeyEncrypt("Hello World", "dogs"))
