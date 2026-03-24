@@ -68,6 +68,22 @@ def rileyKeyEncrypt(word, key):
         result += str(num)
     return result
     
+def rileyKeyEncrypt2(word, key):
+    result = ""
+    for eachLetter in word:
+        # convert to int
+        for eachKey in key:
+            num = ord(eachLetter) + ord(eachKey)
+            result += chr(num + 32)
+    return result
+
+def rileyKeyDecrypt2(word, key):
+    result = ""
+    for i in range(len(word)):
+        if i % len(key) == 0:
+            num = ord(word[i]) - ord(key[0])
+            result += chr(num - 32)
+    return result
 
 # this is just for testing as more words get added to bigListOfWords.txt
 def checkForDuplicatesInWordList():
@@ -142,4 +158,10 @@ def printEncryptedWords():
 
 # print("Hello World")
 
-print(rileyKeyEncrypt("Hello World", "dogs"))
+print(rileyKeyEncrypt2("Hello World", "cat"))
+print(rileyKeyEncrypt2("Hello World", "dog"))
+print(rileyKeyDecrypt2("ËÉÜèæùïíĀïíĀòðă£¡´ÚØëòðăõóĆïíĀçåø", "cat"))
+print(rileyKeyDecrypt2("Ì×Ïéôìðûóðûóóþö¤¯§ÛæÞóþööāùðûóèóë", "dog"))
+
+
+
